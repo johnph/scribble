@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="John.Scribble.Menubar.View.MenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:enums="clr-namespace:John.Scribble.Infrastructure.Enums;assembly=John.Scribble.Infrastructure"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Menu>
+        <MenuItem Header="File" Height="25">
+            <MenuItem Header="Open" 
+                      Foreground="Black" 
+                      Command="{Binding MenuItemCommand}" 
+                      CommandParameter="{x:Static enums:DrawingMode.Open}"/>
+            <MenuItem Header="Save As" 
+                      Foreground="Black" 
+                      Command="{Binding MenuItemCommand}" 
+                      CommandParameter="{x:Static enums:DrawingMode.Save}"/>
+            <MenuItem Header="Clear" 
+                      Foreground="Black" 
+                      Command="{Binding MenuItemCommand}" 
+                      CommandParameter="{x:Static enums:DrawingMode.Clear}"/>
+            <MenuItem Header="Exit" 
+                      Foreground="Black" 
+                      Command="{Binding MenuItemCommand}"></MenuItem>
+        </MenuItem>
+        <MenuItem Header="Edit" Height="25">
+            <MenuItem Header="Cut" Command="Cut"></MenuItem>
+            <MenuItem Header="Copy" Command="Copy"></MenuItem>
+            <MenuItem Header="Paste" Command="Paste"></MenuItem>
+        </MenuItem>
+        <MenuItem Header="Tools" Height="25">
+            <MenuItem Header="Pen" Foreground="Black">
+                <MenuItem Header="Black" 
+                          Command="{Binding MenuItemCommand}" 
+                          CommandParameter="{x:Static enums:DrawingMode.BlackPen}"/>
+                <MenuItem Header="Blue" 
+                          Command="{Binding MenuItemCommand}" 
+                          CommandParameter="{x:Static enums:DrawingMode.BluePen}"/>
+                <MenuItem Header="Red" 
+                          Command="{Binding MenuItemCommand}" 
+                          CommandParameter="{x:Static enums:DrawingMode.RedPen}"/>
+                <MenuItem Header="Green" 
+                          Command="{Binding MenuItemCommand}" 
+                          CommandParameter="{x:Static enums:DrawingMode.GreenPen}"/>
+            </MenuItem>
+            <MenuItem Header="Highlighter" Foreground="Black">
+                <MenuItem Header="Yellow" 
+                          Command="{Binding MenuItemCommand}" 
+                          CommandParameter="{x:Static enums:DrawingMode.YellowHighlighter}"/>
+                <MenuItem Header="Pink" 
+                          Command="{Binding MenuItemCommand}" 
+                          CommandParameter="{x:Static enums:DrawingMode.PinkHighlighter}"/>
+            </MenuItem>
+            <MenuItem Header="Eraser" Foreground="Black">
+                <MenuItem Header="Small" 
+                          Command="{Binding MenuItemCommand}" 
+                          CommandParameter="{x:Static enums:DrawingMode.EraserByPointSmall}"/>
+                <MenuItem Header="Medium" 
+                          Command="{Binding MenuItemCommand}" 
+                          CommandParameter="{x:Static enums:DrawingMode.EraserByPointMedium}"/>
+                <MenuItem Header="Large" 
+                          Command="{Binding MenuItemCommand}" 
+                          CommandParameter="{x:Static enums:DrawingMode.EraserByPointLarge}"/>
+                <MenuItem Header="Stroke" 
+                          Command="{Binding MenuItemCommand}" 
+                          CommandParameter="{x:Static enums:DrawingMode.EraseByStroke}"/>
+            </MenuItem>
+            <Separator />
+            <MenuItem Header="Select Tool" 
+                      Foreground="Black" 
+                      Command="{Binding MenuItemCommand}" 
+                      CommandParameter="{x:Static enums:DrawingMode.Select}"/>
+            <MenuItem Header="None" 
+                      Foreground="Black" 
+                      Command="{Binding MenuItemCommand}" 
+                      CommandParameter="{x:Static enums:DrawingMode.None}"/>
+        </MenuItem>
+    </Menu>
+</UserControl>

@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="John.Scribble.Canvas.View.CanvasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:Control="clr-namespace:John.Scribble.Canvas.Control"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:con="clr-namespace:John.Scribble.Canvas.Converters"
+             mc:Ignorable="d" 
+             Height="615" Width="700">
+    <UserControl.Resources>
+        <DrawingBrush x:Key="RuleLines" Viewbox="0,0,3000,32" ViewboxUnits="Absolute" Viewport="0,0,3000,32" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" TileMode="Tile" Stretch="None">
+            <DrawingBrush.Drawing>
+                <GeometryDrawing Geometry="M 0, 31.5 L 3000, 31.5">
+                    <GeometryDrawing.Pen>
+                        <Pen Brush="#40000000" Thickness="1" />
+                    </GeometryDrawing.Pen>
+                </GeometryDrawing>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+        <con:DrawingAttributesConverter x:Key="DrawingAttributesConverter" />        
+    </UserControl.Resources>
+    <Control:InkCanvasControl x:Name="MyInkCanvas" 
+                              Background="{StaticResource RuleLines}" 
+                              EditingMode="{Binding EditingMode}" 
+                              EraserShape="{Binding StylusShape}" 
+                              Strokes="{Binding Strokes}">
+        <InkCanvas.DefaultDrawingAttributes>
+            <MultiBinding Converter="{StaticResource DrawingAttributesConverter}">
+                <MultiBinding.Bindings>
+                    <Binding RelativeSource="{RelativeSource Self}" />
+                    <Binding Path="ResourceKey"/>
+                </MultiBinding.Bindings>
+            </MultiBinding>
+        </InkCanvas.DefaultDrawingAttributes>
+    </Control:InkCanvasControl>    
+</UserControl>
